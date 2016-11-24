@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<project name="POM-Junit-Ant" default="usage" basedir=".">
+
+	<!-- ========== Initialize Properties =================================== -->
+	<property environment="env" />
+
+	<property name="ws.home" value="${basedir}" />
+	<property name="test.src" value="${ws.home}/src" />
+	<property name="ws.jars" value="${ws.home}/lib" />
+	<property name="test.dest" value="${ws.home}/build" />
+	<property name="test.reportsDir" value="${ws.home}/reports" />
+
+	<path id="test.buildpath">
+		<fileset dir="${test.dest}" />
+	</path>
+
+	<path id="test.libpath">
+		<fileset dir="${ws.jars}" includes="*.jar" />
+	</path>
+
+	<!-- usage -->
+	<target name="usage">
+		<echo>
+		$ ant build -> "to build project"
+		$ ant run -> "to run project"
+		$ ant all -> "to clean-init-compile-run project"
+        </echo>
+	</target>
+
+	<!-- all -->
+	<target name="all" depends="build, run">
+	</target>
+
+	<!-- init -->
+	<target name="init">
+		<echo message="initializing ${ANT}" />
+		<tstamp>
+			<format property="start.time" pattern="MM/dd/yyyy hh:mm aa" />
+		</tstamp>
+		<condition property="ANT" value="${env.ANT_HOME}/bin/ant.bat" else="${env.ANT_HOME}/bin/ant">
+			<os family="windows" />
+		</condition>
+		<echo message="initializing ${test.buildpath}" />
+		<path id="buildpath">
+			<fileset dir="${test.dest}" />
+		</path>
+		<pathconvert pathsep=":" property="test.buildpath" refid="buildpath" />
+		<echo message="initializing ${test.libpath}" />
+		<path id="libpath">
+			<fileset dir="${ws.jars}" includes="*.jar" />
+		</path>
+		<pathconvert pathsep=":" property="test.libpath" refid="libpath" />
+		<echo message="initialization complete." />
+	</target>
+
+	<!-- clean -->
+	<target name="clean">
+		<echo message="cleaning the project..." />
+		<delete dir="${test.dest}" />
+		<mkdir dir="${test.dest}" />
+		<echo message="clean complete." />
+	</target>
+
+	<!-- build -->
+	<target name="build" depends="clean, init">
+		<echo message="building the project..." />
+		<javac includeantruntime="false" debug="true" destdir="${test.dest}" srcdir="${test.src}" target="1.8" classpath="${test.libpath}" />
+		<copy todir="${test.dest}">
+			<fileset dir="${test.src}" includes="**/**/resources/**,**/**/properties/**" />
+		</copy>
+		<jar destfile="${ws.jars}/POM-Junit-Ant.jar" basedir="${test.dest}" />
+		<pathconvert pathsep=":" property="test.libpath" refid="test.libpath" />
+		<echo message="build complete." />
+	</target>
+
+	<!-- run-->
+	<target name="run">
+		<delete includeemptydirs="true" quiet="true">
+			<fileset dir="${test.reportsDir}" includes="**/*" />
+		</delete>
+		<echo message="${test.libpath}" />
+		<java jar="${ws.jars}" fork="true" spawn="true" />
+		<junit fork="yes" haltonfailure="no" printsummary="yes">
+			<classpath refid="test.libpath" />
+			<batchtest todir="${test.reportsDir}" fork="true">
+				<fileset dir="${test.dest}">
+					<include name="**/**/**/JunitTestSuite.class" />
+				</fileset>
+			</batchtest>
+			<formatter type="xml" />
+			<classpath refid="test.libpath" />
+		</junit>
+		<junitreport todir="${test.reportsDir}">
+			<fileset dir="${test.reportsDir}">
+				<include name="TEST-*.xml" />
+			</fileset>
+			<report todir="${test.reportsDir}" />
+		</junitreport>
+	</target>
+</project>
