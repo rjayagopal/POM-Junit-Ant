@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.8.0_111"/>
+	<classpathentry kind="lib" path="C:/Raghul-Desktop/Automation/JARs/httpcomponents-client-4.5.2/lib/fluent-hc-4.5.2.jar"/>
+	<classpathentry kind="lib" path="C:/Raghul-Desktop/Automation/JARs/DB2 Jars/db2jcc.jar"/>
+	<classpathentry kind="lib" path="C:/Raghul-Desktop/Automation/JARs/DB2 Jars/db2jcc_license_cisuz.jar"/>
+	<classpathentry kind="lib" path="C:/Raghul-Desktop/Automation/JARs/DB2 Jars/db2jcc4.jar"/>
+	<classpathentry kind="lib" path="C:/Raghul-Desktop/Automation/JARs/Junit 4.12 Jars/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="lib" path="C:/Raghul-Desktop/Automation/JARs/Junit 4.12 Jars/junit-4.12.jar"/>
+	<classpathentry kind="lib" path="C:/Raghul-Desktop/Automation/JARs/Log4J Jars/apache-log4j-2.7-bin/log4j-api-2.7.jar"/>
+	<classpathentry kind="lib" path="C:/Raghul-Desktop/Automation/JARs/Log4J Jars/apache-log4j-2.7-bin/log4j-core-2.7.jar"/>
+	<classpathentry kind="lib" path="C:/Raghul-Desktop/Automation/JARs/Oracle Jars/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="C:/Raghul-Desktop/Automation/JARs/Selenium Webdriver/selenium-java-2.53.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://seleniumhq.github.io/selenium/docs/api/java/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Raghul-Desktop/Automation/JARs/Selenium Webdriver/selenium-java-2.53.1-srcs.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://seleniumhq.github.io/selenium/docs/api/java/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Raghul-Desktop/Automation/JARs/Selenium Webdriver/selenium-server-2.53.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://seleniumhq.github.io/selenium/docs/api/java/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Raghul-Desktop/Automation/JARs/Selenium Webdriver/selenium-server-2.53.1-srcs.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://seleniumhq.github.io/selenium/docs/api/java/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Raghul-Desktop/Automation/JARs/Selenium Webdriver/selenium-server-standalone-2.53.1.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="http://seleniumhq.github.io/selenium/docs/api/java/"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

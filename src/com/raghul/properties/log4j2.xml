@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="warn" strict="true" name="Log.java">
+	<Properties>
+		<Property name="filepath">src/com/raghul/logs</Property>
+	</Properties>
+
+	<Appenders>
+		<Appender type="Console" name="STDOUT" target="SYSTEM_OUT">
+			<Layout type="PatternLayout">
+				<Pattern>%date{DEFAULT} %level [%class{1.} %threadName] %m%n
+				</Pattern>
+			</Layout>
+		</Appender>
+		<Appender type="File" name="File"
+			fileName="${filepath}/app-info ${date:yyyy-MM-dd}.log" append="true">
+			<Layout type="PatternLayout">
+				<Pattern>%date{DEFAULT} %level [%class{1.} %threadName] %m%n
+				</Pattern>
+			</Layout>
+		</Appender>
+	</Appenders>
+
+	<Loggers>
+		<Logger name="com.raghul.util.Log" level="debug" additivity="false">
+			<AppenderRef ref="File" />
+		</Logger>
+		<Root level="debug">
+			<AppenderRef ref="STDOUT" />
+		</Root>
+	</Loggers>
+
+</Configuration>
